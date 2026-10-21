@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Annapurna Tiffin Service | Ludhiana</title>
+<meta name="description" content="Fresh home-style vegetarian lunch and dinner tiffins delivered in Ludhiana. Standard Rs 90, Deluxe Rs 130, monthly plans from Rs 2,200.">
+<style>
+  :root {
+    --leaf: #2F5D34;        /* curry-leaf green: main accent */
+    --leaf-deep: #234727;
+    --turmeric: #E2A82B;    /* turmeric yellow: highlights */
+    --turmeric-soft: #FBEFC9;
+    --ink: #2A2118;         /* text */
+    --ink-soft: #64584A;    /* secondary text */
+    --rice: #FFFBF2;        /* page background */
+    --steel: #EDE7DA;       /* panels */
+    --rule: #E2D8C3;        /* dividers */
+    --white: #FFFFFF;
+
+    /* Chat widget colours (see chat-widget.js) */
+    --sd-accent: var(--leaf);
+    --sd-accent-ink: var(--white);
+    --sd-bg: var(--white);
+    --sd-surface: var(--rice);
+    --sd-ink: var(--ink);
+    --sd-muted: var(--ink-soft);
+    --sd-rule: var(--rule);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--rice);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  a { color: var(--leaf); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--turmeric); outline-offset: 2px; }
+  h1, h2, h3 { line-height: 1.2; margin: 0; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- Top bar ---------- */
+  .topbar { background: var(--leaf); color: #E8F0E3; font-size: 14px; }
+  .topbar .wrap { display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 8px; padding-bottom: 8px; }
+  .topbar a { color: #fff; font-weight: 600; text-decoration: none; }
+
+  /* ---------- Hero ---------- */
+  header.hero { padding: 36px 0 40px; background: linear-gradient(180deg, var(--turmeric-soft), var(--rice)); }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+  .brand svg { flex: none; }
+  .brand-name { font-weight: 800; font-size: 20px; }
+  .brand-name small { display: block; font-weight: 500; font-size: 13px; color: var(--ink-soft); letter-spacing: .04em; text-transform: uppercase; }
+  .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
+  .hero h1 { font-size: clamp(30px, 7vw, 50px); font-weight: 800; letter-spacing: -.02em; }
+  .hero h1 span { background: linear-gradient(transparent 62%, var(--turmeric) 62%); }
+  .hero p.lead { font-size: 18px; color: var(--ink-soft); max-width: 44ch; margin: 16px 0 24px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 48px; padding: 12px 20px; border-radius: 999px;
+    font: inherit; font-weight: 700; font-size: 16px; text-decoration: none; cursor: pointer;
+    border: 2px solid var(--leaf); background: transparent; color: var(--leaf);
+  }
+  .btn-primary { background: var(--leaf); color: #fff; }
+  .btn-primary:hover { background: var(--leaf-deep); border-color: var(--leaf-deep); }
+  .btn:not(.btn-primary):hover { background: var(--leaf); color: #fff; }
+
+  .price-tags { display: grid; gap: 12px; }
+  .tag { background: var(--white); border: 1px solid var(--rule); border-radius: 16px; padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px; box-shadow: 0 6px 18px -14px rgba(42,33,24,.5); }
+  .tag strong { display: block; font-size: 18px; }
+  .tag small { color: var(--ink-soft); font-size: 14px; }
+  .tag .rs { font-size: 24px; font-weight: 800; color: var(--leaf); white-space: nowrap; }
+  .tag .rs em { font-style: normal; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+
+  /* ---------- Sections ---------- */
+  section { padding: 46px 0; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #9A6B0C; margin: 0 0 6px; }
+  section h2 { font-size: clamp(25px, 5vw, 34px); font-weight: 800; margin-bottom: 10px; }
+  .intro { color: var(--ink-soft); max-width: 62ch; margin: 0 0 24px; }
+  .band { background: var(--steel); }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .card { background: var(--white); border: 1px solid var(--rule); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; }
+  .card h3 { font-size: 20px; margin-bottom: 4px; }
+  .card .price { font-size: 26px; font-weight: 800; color: var(--leaf); margin: 4px 0 10px; }
+  .card .price em { font-style: normal; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+  .card ul { margin: 0; padding-left: 20px; color: var(--ink-soft); }
+  .card li + li { margin-top: 3px; }
+  .card p { margin: 0; color: var(--ink-soft); }
+  .card.featured { border: 2px solid var(--turmeric); }
+  .badge { align-self: flex-start; background: var(--turmeric-soft); color: #7A5508; font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; }
+  .extras { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--ink-soft); font-size: 15px; }
+  .extras strong { color: var(--ink); }
+  .note { background: var(--turmeric-soft); border-radius: 12px; padding: 12px 16px; margin-top: 18px; color: #5E4507; font-size: 15px; }
+
+  table.plans { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; }
+  .plans th, .plans td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--rule); }
+  .plans thead th { background: var(--leaf); color: #fff; font-size: 14px; letter-spacing: .03em; }
+  .plans tbody tr:last-child th, .plans tbody tr:last-child td { border-bottom: 0; }
+  .plans td { font-weight: 800; color: var(--leaf); white-space: nowrap; }
+  .plans th small { display: block; font-weight: 500; color: var(--ink-soft); }
+  .points { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 8px; }
+  .points li { padding-left: 26px; position: relative; color: var(--ink-soft); }
+  .points li::before { content: ""; position: absolute; left: 4px; top: 9px; width: 10px; height: 10px; border-radius: 50%; background: var(--turmeric); }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  .areas { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 12px; padding: 0; list-style: none; }
+  .areas li { background: var(--white); border: 1px solid var(--rule); border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: 15px; }
+  .steps { list-style: none; padding: 0; margin: 0; counter-reset: s; display: grid; gap: 10px; }
+  .steps li { counter-increment: s; background: var(--white); border: 1px solid var(--rule); border-radius: 14px; padding: 14px 16px 14px 58px; position: relative; }
+  .steps li::before { content: counter(s); position: absolute; left: 14px; top: 12px; width: 30px; height: 30px; border-radius: 50%; background: var(--turmeric); color: var(--ink); font-weight: 800; display: grid; place-items: center; }
+  .steps strong { display: block; }
+  .steps span { color: var(--ink-soft); font-size: 15px; }
+
+  table.hours { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; }
+  .hours th, .hours td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .hours tr:last-child th, .hours tr:last-child td { border-bottom: 0; }
+  .hours th { width: 44%; }
+  .hours td small { display: block; color: #9A6B0C; font-weight: 600; }
+  address { font-style: normal; margin-top: 18px; }
+  .contact-list { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 10px; }
+  .contact-list a { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--white); border: 1px solid var(--rule); border-radius: 14px; text-decoration: none; color: var(--ink); font-weight: 600; word-break: break-word; }
+  .contact-list a:hover { border-color: var(--leaf); }
+  .contact-list small { display: block; font-weight: 500; color: var(--ink-soft); font-size: 13px; }
+  .contact-list svg { flex: none; color: var(--leaf); }
+
+  footer { background: var(--ink); color: #DCD3C3; font-size: 14px; padding: 28px 0 110px; }
+  footer p { margin: 0 0 6px; }
+  footer strong { color: #fff; }
+
+  /* ---------- Phone layout ---------- */
+  @media (max-width: 760px) {
+    body { font-size: 16px; }
+    .hero-grid, .grid, .split { grid-template-columns: 1fr; }
+    .actions .btn { flex: 1 1 100%; }
+    section { padding: 36px 0; }
+    .plans th, .plans td { padding: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>Pure vegetarian &middot; Free delivery in 5 areas</span>
+    <span>WhatsApp <a href="https://wa.me/919876543210">+91 98765 43210</a></span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <!-- Steel tiffin carrier mark -->
+      <svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true">
+        <path d="M14 7a7 5 0 0 1 14 0" fill="none" stroke="#2F5D34" stroke-width="2.4" stroke-linecap="round"/>
+        <rect x="9" y="8" width="24" height="3" rx="1.5" fill="#2F5D34"/>
+        <rect x="10" y="12" width="22" height="8" rx="2" fill="#E2A82B"/>
+        <rect x="10" y="21" width="22" height="8" rx="2" fill="#C9C1AE"/>
+        <rect x="10" y="30" width="22" height="8" rx="2" fill="#E2A82B"/>
+        <path d="M8 11v26M34 11v26" stroke="#2F5D34" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div class="brand-name">Annapurna Tiffin Service<small>Ludhiana &middot; Since 2019</small></div>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1>Fresh, home-style <span>vegetarian tiffins</span>, delivered.</h1>
+        <p class="lead">Lunch and dinner cooked fresh every day in Mrs. Simran Kaur's home kitchen in Sarabha Nagar, for students, PG residents, offices and working couples.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://wa.me/919876543210">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Order on WhatsApp
+          </a>
+          <button class="btn" type="button" onclick="window.SalesDesk && SalesDesk.open()">Ask our assistant</button>
+        </div>
+      </div>
+      <div class="price-tags" aria-label="Prices at a glance">
+        <div class="tag"><div><strong>Standard tiffin</strong><small>4 rotis, dal, sabzi, rice, salad</small></div><div class="rs">Rs 90<em>/meal</em></div></div>
+        <div class="tag"><div><strong>Deluxe tiffin</strong><small>2 sabzis (one paneer), raita, sweet</small></div><div class="rs">Rs 130<em>/meal</em></div></div>
+        <div class="tag"><div><strong>Monthly plans</strong><small>Lunch only, Mon to Sat, 26 meals</small></div><div class="rs"><em>from</em> Rs 2,200</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="menu">
+  <div class="wrap">
+    <p class="eyebrow">Menu</p>
+    <h2>What's in the tiffin</h2>
+    <p class="intro">All vegetarian. Jain food (no onion, no garlic) is available on request at the same price.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Standard tiffin</h3>
+        <div class="price">Rs 90 <em>per meal</em></div>
+        <ul><li>4 rotis</li><li>1 dal</li><li>1 seasonal sabzi</li><li>Rice and salad</li></ul>
+      </div>
+      <div class="card featured">
+        <span class="badge">Most filling</span>
+        <h3>Deluxe tiffin</h3>
+        <div class="price">Rs 130 <em>per meal</em></div>
+        <ul><li>4 rotis</li><li>1 dal</li><li>2 sabzis (one paneer)</li><li>Rice, raita, salad and a sweet</li></ul>
+      </div>
+      <div class="card">
+        <h3>Sunday special thali</h3>
+        <div class="price">Rs 150 <em>lunch only</em></div>
+        <p>Our special Sunday lunch. There is no dinner on Sunday. Order by Saturday 8:00 pm.</p>
+      </div>
+    </div>
+    <div class="extras"><span><strong>Extra roti</strong> Rs 8 each</span><span><strong>Extra rice or dal</strong> Rs 20</span></div>
+    <p class="note">Prices may change during festival weeks; the team confirms festival prices on WhatsApp.</p>
+  </div>
+</section>
+
+<section id="plans" class="band">
+  <div class="wrap">
+    <p class="eyebrow">Monthly plans</p>
+    <h2>Eat well all month</h2>
+    <p class="intro">Monday to Saturday. Monthly plans are paid in full in advance, by UPI or cash.</p>
+    <table class="plans">
+      <thead><tr><th scope="col">Plan</th><th scope="col">Standard</th><th scope="col">Deluxe</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Lunch only<small>26 meals</small></th><td>Rs 2,200</td><td>Rs 3,200</td></tr>
+        <tr><th scope="row">Lunch and dinner<small>52 meals</small></th><td>Rs 4,200</td><td>Rs 6,200</td></tr>
+      </tbody>
+    </table>
+    <ul class="points">
+      <li>Try first: a one-day trial meal at the normal per-meal price.</li>
+      <li>Going home for a few days? Pause meals with notice by 8:00 pm the day before.</li>
+      <li>Paused meals are added to the end of your plan, not refunded.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="ordering">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Delivery</p>
+      <h2>Where we deliver</h2>
+      <p class="intro" style="margin-bottom:8px">Free delivery in:</p>
+      <ul class="areas">
+        <li>Sarabha Nagar</li><li>Model Town</li><li>BRS Nagar</li><li>PAU campus area</li><li>Ghumar Mandi</li>
+      </ul>
+      <p class="intro">Somewhere else? Message us and the team will confirm on WhatsApp. Pick-up from the kitchen is also allowed.</p>
+      <table class="hours">
+        <tr><th scope="row">Lunch delivery</th><td>12:30 pm to 2:00 pm</td></tr>
+        <tr><th scope="row">Dinner delivery</th><td>7:30 pm to 9:00 pm<small>No dinner on Sunday</small></td></tr>
+      </table>
+    </div>
+    <div>
+      <p class="eyebrow">How to order</p>
+      <h2>Order cut-off times</h2>
+      <ol class="steps">
+        <li><strong>Next-day meals</strong><span>Order by 8:00 pm the day before.</span></li>
+        <li><strong>Same-day lunch</strong><span>Order by 10:00 am, if meals are left. The team confirms on WhatsApp.</span></li>
+        <li><strong>Office or party orders (20+ tiffins)</strong><span>Need 2 days' notice.</span></li>
+        <li><strong>Sunday thali</strong><span>Order by Saturday 8:00 pm.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="band">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Hours</p>
+      <h2>Kitchen hours</h2>
+      <table class="hours">
+        <tr><th scope="row">Monday to Saturday</th><td>8:00 am to 9:00 pm<small>Kitchen and phone</small></td></tr>
+        <tr><th scope="row">Sunday</th><td>Lunch only<small>Sunday special thali</small></td></tr>
+      </table>
+      <address>
+        <strong>Kitchen</strong><br>
+        House 112, Sarabha Nagar,<br>
+        Ludhiana, Punjab
+      </address>
+    </div>
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2>Talk to us</h2>
+      <ul class="contact-list">
+        <li><a href="https://wa.me/919876543210">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span>+91 98765 43210<small>WhatsApp: we reply within 2 hours during kitchen hours</small></span></a></li>
+        <li><a href="tel:+919876543210">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5l3 .5 1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5.5 3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          <span>+91 98765 43210<small>Phone</small></span></a></li>
+        <li><a href="mailto:orders@annapurnatiffin.example">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 6l8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+          <span>orders@annapurnatiffin.example<small>Email</small></span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Annapurna Tiffin Service</strong> &middot; House 112, Sarabha Nagar, Ludhiana, Punjab &middot; Owner: Mrs. Simran Kaur</p>
+    <p>This is a demo website for a fictional business, made for a classroom exercise. All contact details are placeholders.</p>
+  </div>
+</footer>
+
+<script>
+  window.SalesDeskConfig = {
+    endpoint: "https://annapurna-tiffin-bot.jyotiverma96820.workers.dev/chat",
+    title: "Annapurna Tiffin Assistant",
+    subtitle: "Automated assistant. Orders go to our team.",
+    greeting: "Namaste! I can tell you about today's tiffins, prices, monthly plans and delivery areas, or send an order to our team. How many people are you ordering for, and which area are you in?",
+    quickReplies: ["See the menu and prices", "Monthly plans", "Do you deliver to my area?", "Order a trial meal"],
+    launcherLabel: "Order a tiffin",
+    fallbackContact: "+91 98765 43210 or orders@annapurnatiffin.example",
+    enquiryNextStep: "The team will reply on WhatsApp within 2 hours during kitchen hours.",
+    showStructuredData: true
+  };
+</script>
+<script src="chat-widget.js"></script>
+</body>
+</html>
